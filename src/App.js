@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './App.scss';
 import { Layout } from 'antd';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
-import Sidebar from './components/Sidebar/'
+import Sidebar from './components/Sidebar/Sidebar'
+import axios from 'axios';
 
 const { Content } = Layout;
 
-function App() {
+const position = [23.6850,  90.3563]
+const center =[23.6850,  90.3563]
+class App extends Component {
 
-  const position = [23.6850,  90.3563]
-  const center =[23.6850,  90.3563]
+  constructor() {
+    super();
+    this.state = { summary: null, countries: [] };
+  }
 
-  const sidebarProperty = {
-    visible: true,
-    placement: 'left' 
-  };
+  componentDidMount() {
+    axios
+      .get('https://covid19.mathdro.id/api')
+      .then(res => {
+        this.setState({ summary: res.data })
+      });    
+      
+      axios
+      .get('https://covid19.mathdro.id/api/confirmed')
+      .then(res => {
+        console.log(res)
+        this.setState({ countries: res.data })
+      });  
+  }
 
-  return (
+
+  render() { 
+    console.log('render')
+    return (
       <Layout>
-        <Sidebar ></Sidebar>
+        <Sidebar summary={this.state.summary} countries={this.state.countries}></Sidebar>
         <Layout>
           <Content
             className="site-layout-background"
@@ -45,7 +63,8 @@ function App() {
           </Content>
         </Layout>
       </Layout>
-  );
+    );
+  }
 }
 
 export default App;
