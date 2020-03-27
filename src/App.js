@@ -9,7 +9,6 @@ import axios from 'axios';
 const { Content } = Layout;
 
 const position = [23.6850,  90.3563]
-const center =[23.6850,  90.3563]
 class App extends Component {
 
   constructor() {
@@ -19,22 +18,33 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://covid19.mathdro.id/api')
+      .get('https://corona.lmao.ninja/all')
       .then(res => {
         this.setState({ summary: res.data })
       });    
       
       axios
-      .get('https://covid19.mathdro.id/api/confirmed')
+      .get('https://corona.lmao.ninja/countries?sort=cases')
       .then(res => {
-        console.log(res)
         this.setState({ countries: res.data })
       });  
   }
 
 
   render() { 
-    console.log('render')
+    console.log('render');
+    let mapCircleMarkers = this.state.countries.map((item) => {
+      let center = [item.countryInfo.lat, item.countryInfo.long];
+      return <React.Fragment>
+              <CircleMarker center={center} color="red" radius={item.cases > 10000 ? item.cases/1000 : item.cases > 1000 ? item.cases/200 : 5}   
+               onMouseOver={(e) => e.target.openPopup()}
+               onMouseOut={(e) =>e.target.closePopup()} >
+                <Popup>
+                  <h1>{item.country}</h1>
+                  <label style={{color: 'red'}}>{item.cases.toLocaleString()}</label></Popup>
+              </CircleMarker>
+            </React.Fragment>
+    });
     return (
       <Layout>
         <Sidebar summary={this.state.summary} countries={this.state.countries}></Sidebar>
@@ -50,15 +60,7 @@ class App extends Component {
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker position={position}>
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-              </Marker>
-              <Circle center={center} fillColor="blue" radius={20000} />
-              <CircleMarker center={center} color="red" radius={5}>
-                <Popup>Popup in CircleMarker</Popup>
-              </CircleMarker>
+              {mapCircleMarkers}
             </Map>
           </Content>
         </Layout>

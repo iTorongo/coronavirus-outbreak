@@ -11,20 +11,21 @@ class Sidebar extends Component {
   state = {  }
   render() {
     let countries = this.props.countries.map((item) => {
-      // const flagUrl = `${process.env.PUBLIC_URL}/assets/flags/${item.iso2 ? item.iso2.toLowerCase() : ''}.svg`
-      return <li className="ant-list-item">
+    
+      const flagUrl = require(`../../assets/flags/${item.countryInfo.iso2 ? item.countryInfo.iso2.toLowerCase() : 'unknown'}.svg`)
+      return <li className="ant-list-item" key={item.countryInfo._id ? item.countryInfo._id : Math.random(1000,2000)}>
                 <div className="ant-list-item-meta">
                   <div className="ant-list-item-meta-avatar">
                     <span className="ant-avatar">
-                      <img src={it} alt=""/>
+                      <img src={flagUrl} alt=""/>
                     </span>
                   </div>
                   <div className="ant-list-item-meta-content">
-                    <h4 className="ant-list-item-meta-title">{item.countryRegion}</h4>
+                    <h4 className="ant-list-item-meta-title">{item.country}</h4>
                   </div>
                 </div>
                 <div className="count">
-                 {item.confirmed ? item.confirmed.toLocaleString() : ''}
+                 {item.cases ? item.cases.toLocaleString() : ''}
                 </div>
              </li>
     });

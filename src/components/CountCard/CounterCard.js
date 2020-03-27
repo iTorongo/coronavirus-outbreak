@@ -27,27 +27,27 @@ class CountCard extends Component {
     if (!this.props.summary) {
       return '';
     }
-    const { confirmed, deaths, recovered } = this.props.summary;
+    const { cases, deaths, recovered } = this.props.summary;
     return ( 
       <div className="count-card-container">
         <div className="count-card-section">
           <Card bordered={true} hoverable={true} className="confirmed select">
             <Text strong={true} type="secondary">TOTAL</Text>
-            <Title level={2} style={this.getCardColor('confirmed')}>{confirmed.value.toLocaleString()}</Title>
+            <Title level={2} style={this.getCardColor('confirmed')}>{cases.toLocaleString()}</Title>
           </Card>
           <Card bordered={true} hoverable={true} className="deaths">
             <Text strong={true} type="secondary">DEATHS</Text>
-            <Title level={2}style={this.getCardColor('deaths')}>{deaths.value.toLocaleString()}</Title>
+            <Title level={2}style={this.getCardColor('deaths')}>{deaths.toLocaleString()}</Title>
           </Card>
         </div>
         <div className="count-card-section">
           <Card bordered={true} hoverable={true} className="recovered">
             <Text strong={true} type="secondary">RECOVERED</Text>
-            <Title level={2}  style={this.getCardColor('recovered')}>{recovered.value.toLocaleString()}</Title>
+            <Title level={2}  style={this.getCardColor('recovered')}>{recovered.toLocaleString()}</Title>
           </Card>
           <Card bordered={true} hoverable={true} className="sick">
             <Text strong={true} type="secondary">ACTIVE</Text>
-            <Title level={2} style={this.getCardColor('sick')}>{(confirmed.value - (deaths.value + recovered.value)).toLocaleString()}</Title>
+            <Title level={2} style={this.getCardColor('sick')}>{(cases - (deaths + recovered)).toLocaleString()}</Title>
           </Card>
         </div>
       </div>
