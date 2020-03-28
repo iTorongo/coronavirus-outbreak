@@ -1,0 +1,16 @@
+.country-list{
+    max-height: calc(100vh - 242px);
+    overflow: auto;
+    margin-left: 15px;
+    .ant-list-item {
+        cursor: pointer;
+    }
+    .ant-avatar {
+        height: auto;
+        border-radius: 0;
+    }
+    .count{
+        display: flex;
+        flex-grow: .2;
+    } 
+}
