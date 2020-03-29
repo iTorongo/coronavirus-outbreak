@@ -24,13 +24,12 @@ class MainLayout extends Component {
 		};
 
 		handleCountrySelect = (countryIso2) => {
-			console.log(countryIso2)
 			axios
-      .get(`https://corona.lmao.ninja/countries/${countryIso2}`)
-      .then(res => {
-				this.setState({ countryDetails: res.data })
-			}); 
-			this.showCountryDetails();
+				.get(`https://corona.lmao.ninja/countries/${countryIso2}`)
+				.then(res => {
+					this.setState({ countryDetails: res.data })
+				}); 
+				this.showCountryDetails();
 		};
 
     render() { 
@@ -38,7 +37,7 @@ class MainLayout extends Component {
         <Layout>
             <Sidebar summary={this.props.summary} countries={this.props.countries} onSelectCountry={this.handleCountrySelect}></Sidebar>
             <Home position={position} countries={this.props.countries}  onSelectCountry={this.handleCountrySelect}></Home>
-						<CountryDetails visible={this.state.isVisiblecountryDetails} onClose={this.onCloseCountryDetails} details={this.countryDetails}></CountryDetails>
+						<CountryDetails visible={this.state.isVisiblecountryDetails} onClose={this.onCloseCountryDetails} details={this.state.countryDetails}></CountryDetails>
         </Layout>
       );
     }
