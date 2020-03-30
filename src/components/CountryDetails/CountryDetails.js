@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Drawer,Row, Col, Statistic, Typography, Card, PageHeader } from 'antd';
+import { Drawer,Row, Col, Statistic, Card, PageHeader } from 'antd';
 import GlobalStyles from '../../styles/global-styles';
 import './CountryDetails.scss';
 
@@ -20,9 +20,6 @@ class CountryDetails extends Component {
 			todayDeaths,
 			recovered,
 			active,
-			critical,
-			casesPerOneMillion,
-			deathsPerOneMillion,
 			updated } = this.props.details;
 
 		const flagUrl = require(`../../assets/flags/${countryInfo.iso2 ? countryInfo.iso2.toLowerCase() : 'unknown'}.svg`)

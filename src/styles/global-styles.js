@@ -2,7 +2,7 @@ const GlobalStyles = {
   colors: {
     confirmed: '#ff3300',
     deaths: '#000',
-    recovered: '#00cc00',
+    recovered: '#1cc11c',
     sick: '#548cff'
   },
   colorsRGB: {
