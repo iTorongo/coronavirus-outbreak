@@ -1,9 +1,13 @@
 .country-list{
-    max-height: calc(100vh - 242px);
+    margin-top: 15px;
+    max-height: calc(100vh - 257px);
     overflow: auto;
-    margin-left: 15px;
     .ant-list-item {
         cursor: pointer;
+        padding-left: 15px;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
     }
     .ant-avatar {
         height: auto;

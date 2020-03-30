@@ -4,7 +4,6 @@ import GlobalStyles from '../../styles/global-styles';
 import './CountryDetails.scss';
 
 const { colors } = GlobalStyles;
-const { Title } = Typography;
 
 class CountryDetails extends Component {
   state = {  }
@@ -38,7 +37,7 @@ class CountryDetails extends Component {
 				<PageHeader
 					title={country}
 					className="country-details-header"
-					subTitle={updated}
+					subTitle={ 'Last Update: ' + new Date(updated).toLocaleDateString()}
 					avatar={{ src: flagUrl }}>
 				</PageHeader>
 				<Row gutter={[8, 16]}>
