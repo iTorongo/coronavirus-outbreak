@@ -1,3 +1,8 @@
+React application for the visualization of corona virus outbreak globally
+
+## Data Source
+[https://github.com/NovelCOVID/API]NovelCOVID/API based on [https://www.worldometers.info/coronavirus/](https://www.worldometers.info/coronavirus/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
