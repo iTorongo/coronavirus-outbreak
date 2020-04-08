@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Typography } from 'antd';
 import GlobalStyles from '../../styles/global-styles';
-import './CountCard.scss'
+import './CountCard.scss';
+import  worldometers from '../../assets/worldometer.jpg';
 
 const { colors }  = GlobalStyles;
 
@@ -49,6 +50,9 @@ class CountCard extends Component {
             <Text strong={true} type="secondary">ACTIVE</Text>
             <Title level={2} style={this.getCardColor('sick')}>{(cases - (deaths + recovered)).toLocaleString()}</Title>
           </Card>
+        </div>
+        <div className="data-source">
+          <span>Source: </span> <a target="_blank" rel="noopener noreferer"  href="https://www.worldometers.info/coronavirus/"> <img src={worldometers} alt="worldometers"/></a>
         </div>
       </div>
     );
