@@ -7,7 +7,7 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = { summary: null, countries: [] };
+    this.state = { summary: null, countries: [], isLoading: true };
   }
 
   componentDidMount() {
@@ -20,13 +20,13 @@ class App extends Component {
       axios
       .get('https://corona.lmao.ninja/countries?sort=cases')
       .then(res => {
-        this.setState({ countries: res.data })
+        this.setState({ countries: res.data, isLoading: false })
       });  
   }
 
   render() { 
     return (
-      <MainLayout summary={this.state.summary} countries={this.state.countries}></MainLayout>
+      <MainLayout summary={this.state.summary} countries={this.state.countries} isLoading={this.state.isLoading}></MainLayout>
     );
   }
 }

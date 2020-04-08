@@ -3,6 +3,7 @@ import { Layout } from 'antd';
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar/Sidebar'
 import CountryDetails from '../../components/CountryDetails/CountryDetails';
+import Loader from '../../components/Loader/Loader';
 import Home from '../Home/Home';
 
 const position = [23.6850,  90.3563]
@@ -35,9 +36,10 @@ class MainLayout extends Component {
     render() { 
       return (       
         <Layout>
+			<Loader isLoading={this.props.isLoading}></Loader>
             <Sidebar summary={this.props.summary} countries={this.props.countries} onSelectCountry={this.handleCountrySelect}></Sidebar>
             <Home position={position} countries={this.props.countries}  onSelectCountry={this.handleCountrySelect}></Home>
-						<CountryDetails visible={this.state.isVisiblecountryDetails} onClose={this.onCloseCountryDetails} details={this.state.countryDetails}></CountryDetails>
+			<CountryDetails visible={this.state.isVisiblecountryDetails} onClose={this.onCloseCountryDetails} details={this.state.countryDetails}></CountryDetails>
         </Layout>
       );
     }
