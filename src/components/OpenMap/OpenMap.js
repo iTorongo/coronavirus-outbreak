@@ -7,13 +7,13 @@ import './OpenMap.scss';
 const { colors } = GlobalStyles;
 const { Title, Text } = Typography;
 
-const position = [23.6850,  90.3563]
+const centered = [15.1794, 39.7823]
 
 class OpenMap extends Component {
 	state = {  }
 
 	getDynamicRadius(cases) {
-		return Math.round(Math.log( cases ) / Math.log( 2 )) * ((cases > 50000) ? 4 : 3);
+		return Math.round(Math.log( cases ) / Math.log( 2 )) * ((cases > 100000) ? 2 : 1.2);
 	}
 	render() { 
 		const mapCircleMarkers = this.props.countries.map((item) => {
@@ -44,7 +44,7 @@ class OpenMap extends Component {
 		});
 	
 		return ( 
-			<Map center={position} zoom={3}>
+			<Map center={centered} zoom={3} minZoom={2} maxZoom={6}>
 				<TileLayer
 					attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
