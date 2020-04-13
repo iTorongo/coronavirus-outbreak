@@ -27,13 +27,13 @@ class OpenMap extends Component {
 									<Popup>
 										<Title level={3}>{item.country}</Title>
 										<div className="popup-count">
-											<Text strong>Confirmed: </Text><Text strong style={{color: colors.confirmed}}>{item.cases.toLocaleString()}</Text>
+											<Text strong>Confirmed: </Text><Text strong style={{color: colors.confirmed}}>{item.cases ? item.cases.toLocaleString() : ''}</Text>
 										</div>
 										<div className="popup-count">
-											<Text strong>Deaths: </Text><Text strong style={{color:colors.deaths}}>{item.deaths.toLocaleString()}</Text>
+											<Text strong>Deaths: </Text><Text strong style={{color:colors.deaths}}>{item.deaths ? item.deaths.toLocaleString() : ''}</Text>
 										</div>
 										<div className="popup-count">
-											<Text strong>Recovered: </Text><Text strong style={{color:colors.recovered}}>{item.recovered.toLocaleString()}</Text>
+											<Text strong>Recovered: </Text><Text strong style={{color:colors.recovered}}>{item.recovered ? item.recovered.toLocaleString() : ''}</Text>
 										</div>
 										<div className="popup-count">
 											<Text strong>Active: </Text><Text strong style={{color:colors.sick}}>{(item.cases - (item.deaths + item.recovered)).toLocaleString()}</Text>
