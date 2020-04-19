@@ -12,13 +12,13 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://corona.lmao.ninja/all')
+      .get('https://corona.lmao.ninja/v2/all')
       .then(res => {
         this.setState({ summary: res.data })
       });    
       
       axios
-      .get('https://corona.lmao.ninja/countries?sort=cases')
+      .get('https://corona.lmao.ninja/v2/countries?sort=cases')
       .then(res => {
         this.setState({ countries: res.data, isLoading: false })
       });  

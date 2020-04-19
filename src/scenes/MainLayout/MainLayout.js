@@ -26,7 +26,7 @@ class MainLayout extends Component {
 
 		handleCountrySelect = (countryIso2) => {
 			axios
-				.get(`https://corona.lmao.ninja/countries/${countryIso2}`)
+				.get(`https://corona.lmao.ninja/v2/countries/${countryIso2}`)
 				.then(res => {
 					this.setState({ countryDetails: res.data })
 				}); 
