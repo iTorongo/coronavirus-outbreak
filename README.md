@@ -1,5 +1,7 @@
 React application for the visualization of corona virus outbreak globally
 
+Demo: https://itorongo.github.io/coronavirus-outbreak/
+
 ## Data Source
 Api: [https://github.com/NovelCOVID/API](https://github.com/NovelCOVID/API) based on [https://www.worldometers.info/coronavirus/](https://www.worldometers.info/coronavirus/)
 
